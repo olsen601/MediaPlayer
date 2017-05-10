@@ -25,7 +25,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+
 import java.io.File;
 
 
@@ -94,7 +96,7 @@ public class Main extends Application {
         menu.setLayoutX(20);
         menu.setLayoutY(320);
         BorderPane.setAlignment(menu, Pos.BOTTOM_CENTER);
-        menu.setStyle("-fx-background-color: #e81713");
+        menu.setStyle("-fx-background-color: #403840");
 
         Polygon triangle = new Polygon();
         triangle.getPoints().addAll(new Double[]{0.0, 0.0, 0.0, 50.0, 45.0, 25.0});
@@ -103,7 +105,7 @@ public class Main extends Application {
         playButton.setPrefSize(45, 50);
         playButton.setMaxSize(45, 50);
         playButton.setMaxSize(45, 50);
-        playButton.setStyle("-fx-background-color: #403840;");
+        playButton.setStyle("-fx-background-color: #e81713;");
 
         Rectangle square = new Rectangle();
         square.setHeight(50);
@@ -114,7 +116,7 @@ public class Main extends Application {
         stopButton.setPrefSize(50, 50);
         stopButton.setMaxSize(50, 50);
         stopButton.setMaxSize(50, 50);
-        stopButton.setStyle("-fx-background-color: #403840;");
+        stopButton.setStyle("-fx-background-color: #e81713;");
 
         Polygon rewind = new Polygon();
         rewind.getPoints().addAll(new Double[]{50.0, 50.0, 5.0, 25.0, 50.0, 0.0});
@@ -136,14 +138,14 @@ public class Main extends Application {
         timeSlider.setMajorTickUnit(60);
         timeSlider.setMinorTickCount(30);
         timeSlider.setBlockIncrement(15);
-        timeSlider.setStyle("-fx-color: #403840;" + "-fx-fill: #403840");
+        timeSlider.setStyle("-fx-color: #e81713;" + "-fx-fill: #e81713");
 
         Slider volumeSlider = new Slider();
         volumeSlider.setMinWidth(100);
         volumeSlider.setMaxWidth(100);
         volumeSlider.setValue(100);
         //volumeSlider.setOrientation(Orientation.VERTICAL);
-        volumeSlider.setStyle("-fx-color: #403840;" + "-fx-fill: #403840");
+        volumeSlider.setStyle("-fx-color: #e81713;" + "-fx-fill: #e81713");
 
         grid.add(timeSlider, 0, 0);
         //grid.add(rewindButton,1,0);
@@ -223,6 +225,18 @@ public class Main extends Application {
         player.setOnEndOfMedia(new Runnable() {
             @Override
             public void run() {
+                player.dispose();
+            }
+        });
+        player.setOnError(new Runnable() {
+            @Override
+            public void run() {
+                player.dispose();
+            }
+        });
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
                 player.dispose();
             }
         });

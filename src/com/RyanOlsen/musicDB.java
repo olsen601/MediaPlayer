@@ -1,14 +1,19 @@
 package com.RyanOlsen;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class musicDB {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String DB_CONNECTION_URL = "jdbc:mysql://localhost/musicDB";
+    static final String DB_CONNECTION_URL = "jdbc:mysql://localhost:3306/musicDB";
     static final String USER = "Java";
     static final String PASSWORD = System.getenv("MySQL_Java_password");
 
     public static String getTrack(Integer track) {
 
-            String r ;
+            String r = "" ;
 
             try {
                 Class.forName(JDBC_DRIVER); //try catch on it's own
