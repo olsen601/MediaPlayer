@@ -1,7 +1,6 @@
 package com.RyanOlsen;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
@@ -54,7 +53,7 @@ public class Main extends Application {
         gridList.setPadding(new Insets(10, 10, 10, 10));
         gridList.setAlignment(Pos.TOP_CENTER);
 
-        String path = "src//music//game of drones.mp3"; //throws here
+        String path = "src//music//game of drones.mp3"; //actual song
         Media song = new Media(new File(path).toURI().toString());
         MediaPlayer player = new MediaPlayer(song);
         MediaView screen = new MediaView();
@@ -71,7 +70,7 @@ public class Main extends Application {
         trackHeader.setTextFill(Color.valueOf("e81713"));
         trackHeader.setFont(Font.font("Helvetica", FontWeight.BOLD, 24));
 
-        Label track = new Label(musicDB.getTrack(1));
+        Label track = new Label(musicDB.getTrack(1)); //get sql track as name, later create button
         track.setTextFill(Color.valueOf("e81713"));
         track.setFont(Font.font("Helvetica", FontWeight.BOLD, 16));
         gridList.add(track,1,1);
@@ -208,10 +207,10 @@ public class Main extends Application {
             }
         });
 
-        Platform.runLater(new Runnable() {
+        player.setOnPlaying(new Runnable() {
             @Override
             public void run() {
-                if (player.getStatus() == MediaPlayer.Status.PLAYING) {
+                while (player.getStatus() == MediaPlayer.Status.PLAYING) {
                     Duration currentTime = player.getCurrentTime();
                     Double totalTime = player.getTotalDuration().toMillis();
                     timeSlider.setDisable(player.getCurrentTime().isUnknown());

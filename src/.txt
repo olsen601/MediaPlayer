@@ -1,0 +1,13 @@
+Java Final Project Resources
+Music
+http://opsound.org/artist/dhalius/
+http://opsound.org/artist/smilingcynic/
+Code
+http://docs.oracle.com/javafx/2/media/playercontrol.htm
+http://docs.oracle.com/javafx/2/text/jfxpub-text.htm
+https://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Rectangle.html
+http://docs.oracle.com/javafx/2/ui_controls/slider.htm
+https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Slider.html
+https://docs.oracle.com/javafx/2/api/javafx/scene/layout/HBox.html
+http://docs.oracle.com/javafx/2/layout/size_align.htm
+https://docs.oracle.com/javafx/2/api/javafx/scene/media/MediaPlayer.html

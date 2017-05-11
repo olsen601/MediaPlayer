@@ -23,12 +23,13 @@ public class musicDB {
 
             try {
                 Connection connection = DriverManager.getConnection(DB_CONNECTION_URL, USER, PASSWORD);
-                String prepSelect = "SELECT * FROM Track WHERE '" + (track) + "' = TrackID";
+                String prepSelect = "SELECT TrackName FROM Track WHERE '" + (track) + "' = TrackID";
                 PreparedStatement psSelect = connection.prepareStatement(prepSelect);
                 ResultSet rs = psSelect.executeQuery();
                 r = rs.toString();
                 psSelect.close();
             } catch (Exception ex) {
+                System.out.println(ex);
                 System.out.println("mySQL unable to form connection");
             }
             return r;
